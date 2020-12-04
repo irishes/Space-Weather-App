@@ -17,7 +17,30 @@
 	
 		<!-- VUE -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <!-- Socket.io -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
 	</head>
 	<body>
+        <script>
+            let socket = io();
+
+            socket.on('server_welcome', function(){
+                console.log('Welcome to Mars Weather App');
+            });
+
+            socket.on('server-');
+
+            // Handles Making Requests //
+            function makeRequest(type){
+                switch(type){
+                    case("TEST"):
+                        socket.emit('client_test');
+                }
+            }
+        </script>
+        <h1>Mars Weather App</h1>
+        <h2>Welcome to the Mars Weather App</h2>
+        <button onclick=makeRequest("TEST")>CLICK ME</button>
  	</body>
 </html> 
