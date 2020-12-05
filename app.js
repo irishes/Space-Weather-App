@@ -17,9 +17,6 @@ let io = require('socket.io')(serv, {});
 io.sockets.on('connection', function(socket){
     console.log('New Socket Connection');
 
-    let serverDate = new Date();
-    let serverTime = serverDate.getTime();
-
     socket.emit('server_welcome');
 
     function getJSON(url){

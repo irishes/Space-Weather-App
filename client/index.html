@@ -2,45 +2,52 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 		<!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-	
-		<!-- VUE -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
         <!-- Socket.io -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
+	
+		<!-- IO Communication -->
+		<script crossorigin type="text/javascript" src="client/js/handleSocketCommunication.js"></script>
+
+		<!-- Aframe -->
+		<script crossorigin type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.0.4/aframe.min.js"></script>
+  
+		<!-- React and Babel -->
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  		<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+		<!-- Gothic Font -->
+		<link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'></link>
+
+		<link rel="stylesheet" href="/client/css/app.css"></link>
 	</head>
 	<body>
-        <script>
-            let socket = io();
+		<div id="weather-app">
+			<div id="header" class="header"></div>
+			<div id="aframe-display" class="aframe-display"></div>
+			<div id="current-weather" class="current"></div>
+			<div id="forecast" class="forecast"></div>
+		</div>
 
-            socket.on('server_welcome', function(){
-                console.log('Welcome to Mars Weather App');
-            });
+		<script type="text/babel">
+			class Header extends React.Component{
+				render(){
+					return <h1 class="title">InSight-ful Weather</h1> 
+				}
+			}
 
-            socket.on('server-');
+			class Display extends React.Component{
+				render(){
+					return <a-scene><a-assets><img id="img_mars" src="/client/img/mars.jpg"></img></a-assets><a-sky color="black"></a-sky><a-camera wasd-controls-enabled="false" look-controls="false"></a-camera><a-sphere src="#img_mars" position="0 1.6 -3" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-sphere></a-scene>
+				}
+			}
 
-            // Handles Making Requests //
-            function makeRequest(type){
-                switch(type){
-                    case("TEST"):
-                        socket.emit('client_test');
-                }
-            }
-        </script>
-        <h1>Mars Weather App</h1>
-        <h2>Welcome to the Mars Weather App</h2>
-        <button onclick=makeRequest("TEST")>CLICK ME</button>
- 	</body>
+			ReactDOM.render(<Header />, document.getElementById('header'))
+			ReactDOM.render(<Display />, document.getElementById('aframe-display'))
+		</script>
+	</body>
 </html> 

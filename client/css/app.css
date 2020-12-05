@@ -1,0 +1,15 @@
+.title{
+	text-align: center;
+	font-family: 'Didact Gothic';
+	font-size: 60px;
+	margin-top: 0%;
+	font-color: white;
+}
+
+.header{
+	background-color: #404040;
+}
+
+.aframe-display{
+	background-color: #6b6b6b;
+}
