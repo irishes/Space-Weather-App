@@ -23,6 +23,10 @@
 		<!-- Gothic Font -->
 		<link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'></link>
 
+		<!-- Mars Date -->
+		<script type="text/javascript" src="client/js/marsdate.min.js"></script>
+
+		<!-- Custom Style -->
 		<link rel="stylesheet" href="/client/css/app.css"></link>
 	</head>
 	<body>
@@ -36,18 +40,38 @@
 		<script type="text/babel">
 			class Header extends React.Component{
 				render(){
-					return <h1 class="title">InSight-ful Weather</h1> 
+					return <h1 class="title">
+								InSightful Weather
+							</h1> 
 				}
 			}
 
 			class Display extends React.Component{
 				render(){
-					return <a-scene><a-assets><img id="img_mars" src="/client/img/mars.jpg"></img></a-assets><a-sky color="black"></a-sky><a-camera wasd-controls-enabled="false" look-controls="false"></a-camera><a-sphere src="#img_mars" position="0 1.6 -3" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-sphere></a-scene>
+					return <a-scene embedded><a-assets><img id="img_mars" src="/client/img/mars.jpg"></img></a-assets><a-sky color="black"></a-sky><a-camera wasd-controls-enabled="false" look-controls="false"></a-camera><a-sphere src="#img_mars" position="0 1.6 -3" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-sphere></a-scene>
+				}
+			}
+
+			class Current extends React.Component{
+				render(){
+					return <h1>
+								Current
+							</h1> 
+				}
+			}
+
+			class Forecast extends React.Component{
+				render(){
+					return <h1>
+								Forecast
+							</h1> 
 				}
 			}
 
 			ReactDOM.render(<Header />, document.getElementById('header'))
-			ReactDOM.render(<Display />, document.getElementById('aframe-display'))
+			//ReactDOM.render(<Display />, document.getElementById('aframe-display'))
+			ReactDOM.render(<Current />, document.getElementById('current-weather'))
+			ReactDOM.render(<Forecast />, document.getElementById('forecast'))
 		</script>
 	</body>
 </html> 

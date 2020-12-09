@@ -4,7 +4,9 @@ socket.on('server_welcome', function(){
 	console.log('Welcome to Mars Weather App');
 });
 
-socket.on('server-test');
+socket.on('server_send_data', function(data){
+	console.log(Object.keys(data));
+});
 
 // Handles Making Requests //
 function makeRequest(type){
